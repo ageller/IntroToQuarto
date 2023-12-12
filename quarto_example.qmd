@@ -1,0 +1,161 @@
+---
+title: "Do Hershey's Stock Prices Increase Around Valentine's Day?"
+author: "Aaron M. Geller"
+date: "12/12/2023"
+theme: journal
+format:
+    html:
+        code-fold: true
+        code-tools: true
+---
+
+
+## Load and prepare the data using Python
+
+```{python}
+#| label: python-imports
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import ttest_ind, ttest_1samp, ks_2samp, linregress
+
+
+```
+
+```{python}
+#| label: prep-data
+#| fig-cap: "Fig. 1 : Hershey's stock price over time"
+
+
+# read in the data
+df = pd.read_csv('HSY.csv') # looks a bit better
+
+# convert the date
+df['Date'] = pd.to_datetime(df['Date'])
+df['fractional_year'] = df['Date'].dt.year + df['Date'].dt.dayofyear/365.25
+df['year'] = df['Date'].dt.year
+df['fraction_of_year'] = df['Date'].dt.dayofyear/365.25
+
+# subtract off a the long-term bulk trend by calculating a moving average
+df['close_rolling_120d_mean'] = df['Close'].rolling(window = 120).mean()
+df['close_detrended'] = df['Close'] - df['close_rolling_120d_mean']
+
+# normalize so that the value goes between zoer and one
+col = df.groupby(df['year'])['close_detrended']
+df['normalized_detrended_close'] = (df['close_detrended'] - col.transform('min'))/(col.transform('max') - col.transform('min'))
+
+# take only dates after 1980, since 1980 isn't a full year in this dataset
+df = df.loc[df['year'] >= 1981]
+
+# plot the result
+
+f, ax = plt.subplots(2, 1, sharex = True)
+ax[0].plot(df['fractional_year'], df['Close'], lw = 4, label = 'data', color = 'black')
+ax[0].plot(df['fractional_year'], df['close_rolling_120d_mean'], label = 'rolling average', color = 'red')
+ax[0].set_ylabel('Stock Price ($)')
+ax[0].legend()
+
+ax[1].plot(df['fractional_year'], df['close_detrended'], color = 'black')
+ax[1].set_ylabel('Detrended Stock Price')
+ax[1].set_xlabel('Date')
+
+plt.subplots_adjust(hspace = 0)
+
+```
+
+```{python}
+#| label: bin-data
+#| fig-cap: "Fig. 2 : Mean binned Hershey's stock price over one year periods"
+
+# set some parameters
+
+holiday = pd.Timestamp('2023-02-14') # Valentine's Day
+holiday_frac = holiday.dayofyear/365.25
+col = 'normalized_detrended_close'
+
+# range to use for statistcal analysis
+days_before = 15/365.25
+days_after = 15/365.25  
+
+tbins = np.linspace(0,1,50)
+hval = np.zeros(len(tbins) - 1)
+hval_err = np.zeros(len(tbins) - 1)
+for i in range(len(tbins) - 1):
+    vals = df.loc[(df['fraction_of_year'] >= tbins[i]) & (df['fraction_of_year'] < tbins[i+1])][col]
+    hval[i] = np.mean(vals)
+    hval_err[i] = np.std(vals)/len(vals)**0.5
+tbins = tbins[0:-1] + np.diff(tbins)[0]
+
+f, ax = plt.subplots()
+ax.errorbar(tbins, hval, yerr = hval_err, marker = 'o', ls = 'none', color = 'black', capsize = 3, label = 'binned data')
+
+ax.axvline(x = holiday_frac, color = 'red', label = 'holiday date range')
+ax.axvline(x = holiday_frac - days_before, color = 'red', ls = 'dashed')
+ax.axvline(x = holiday_frac + days_after, color = 'red', ls = 'dashed')
+ax.set_xlabel('Fraction of Year')
+ax.set_ylabel('Normalized closing stock value (binned)')
+ax.legend()
+
+```
+
+## Perform a few statistical checks to see if the stock price increases after Valentine's Day
+
+
+```{python}
+#| label: stats-py
+vals_before_holiday = df.loc[(df['fraction_of_year'] >= holiday_frac - days_before) & (df['fraction_of_year'] < holiday_frac)][col]
+vals_after_holiday = df.loc[(df['fraction_of_year'] >= holiday_frac) & (df['fraction_of_year'] < holiday_frac + days_after)][col]
+
+# perform a T-test
+t_stat, t_p_value = ttest_ind(vals_before_holiday, vals_after_holiday, equal_var = False)
+
+# perform a K-S test
+statistic, ks_p_value = ks_2samp(vals_before_holiday, vals_after_holiday)
+
+
+# derive the slope around the holiday at each year
+slopes = []
+n_positive = 0
+
+plim = 0.01
+# Loop through each unique year
+for year in df['year'].unique():
+    # Subset data for the current year
+    year_data = df.loc[df['year'] == year]
+    
+    # Subset data around Feb
+    holiday_data = year_data.loc[(df['fraction_of_year'] >= holiday_frac - days_before) & (df['fraction_of_year'] <= holiday_frac + days_after)]
+    
+    # Perform linear regression
+    slope, intercept, r_value, p_value, std_err = linregress(holiday_data['fraction_of_year'], holiday_data[col])
+
+    # Append the slope the list and count the positive slopes
+    slopes.append(slope)
+    if (slope > 0 and p_value < plim):
+        n_positive += 1
+
+
+# Perform one-sample t-test
+t_stat, t_p_value_2 = ttest_1samp(slopes, 0)
+
+
+```
+
+Statistical results:
+
+* p-value for a 2-sample T-test on values before vs. after Valentine's Day : `r reticulate::py_eval("t_p_value")`.
+* p-value for a 2-sample K-S on values before vs. after Valentine's Day : `r reticulate::py_eval("ks_p_value")`.
+* Fraction of years that have a significantly positive slope near Valentine's Day: `r reticulate::py_eval("n_positive/len(slopes)")`
+* p-value for a 1-sample T-test comparing the slopes to zero : `r reticulate::py_eval("t_p_value_2")`
+
+
+
+```{r}
+#| label: fig-iris-Rplotly
+#| fig-cap: "Interactive contour plot showing iris flower data."
+#| warning: false
+
+
+```
+
