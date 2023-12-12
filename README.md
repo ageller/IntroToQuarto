@@ -15,13 +15,13 @@ The example here explores stock prices for Hershey's (chocolate).  I downloaded 
 
     I recommend that you use conda and create an environment for this.  (You can either work with [full Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/).)  To create the environment:
 
-```
-conda create --name quarto-env
-conda activate quarto-env
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy scipy r-rmarkdown r-reticulate
-```
+    ```
+    conda create --name quarto-env
+    conda activate quarto-env
+    conda config --add channels conda-forge
+    conda config --set channel_priority strict
+    conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy scipy r-rmarkdown r-reticulate
+    ```
 
 3. Before using Quarto, you will need to activate you env using `conda activate quarto-env`
 
