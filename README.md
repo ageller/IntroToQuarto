@@ -9,7 +9,7 @@ The example here explores stock prices for Hershey's (chocolate).  I downloaded 
 
 1. Install Quarto:
 
-Documentation from Quarto can be found [here](https://docs.posit.co/resources/install-quarto/).  I used downloaded the latest version from their GitHub repo [here](https://github.com/quarto-dev/quarto-cli/releases/).  Then I added the executable from `<base_dir>/src/bin/` to my PATH variable.
+    Documentation from Quarto can be found [here](https://docs.posit.co/resources/install-quarto/).  I used downloaded the latest version from their GitHub repo [here](https://github.com/quarto-dev/quarto-cli/releases/).  Then I added the executable from `<base_dir>/src/bin/` to my PATH variable.
 
 2. Install Python and R and related libraries
 
