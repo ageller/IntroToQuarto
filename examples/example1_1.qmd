@@ -1,0 +1,78 @@
+---
+title: "Quarto Basics"
+author: "Aaron M. Geller"
+date: "12/12/2023"
+number-sections: true
+format:
+    html:
+        code-fold: false
+        code-tools: true
+theme: darkly
+toc: true
+---
+
+## Start in R
+```{r}
+#| label: r-code-1
+
+library(reticulate)
+
+# define a simple variable as a test
+x <- 123
+
+```
+
+## Use variables from R in Python
+```{python}
+#| label: python-code-1
+
+# multiply the x value from r by 2
+y = r.x*2.
+
+```
+
+
+## Use variables from Python in R
+```{r}
+#| label: r-code-2
+
+# add to the y variable from python 
+z <- py$y + 7
+```
+
+## Markdown using variables from both R and Python.
+
+I started in **R** with a value of $x = `r x`$.  Then I used **Python** to define $y = 2 \times x = `r py$y`$.  Then I moved back to **R** to define $z = y + 7 = `r z`$.
+
+
+## Create a plot in Python using the iris dataset from R.  
+
+I will use  [`seaborn`](https://seaborn.pydata.org/) to generate the corner plot in @fig-corner. (I haven't found a package in R that can produce a nicer looking corner plot in fewer lines of code.) 
+
+### Load the data in R
+```{r}
+#| label: r-code-3
+
+library(datasets)
+
+# load the iris dataset and print the first 10 rows
+data(iris)
+head(iris)
+
+```
+
+
+### Create the plot in Python 
+
+
+```{python}
+#| label: fig-corner
+#| fig-cap: "Corner plot created showing iris flower data."
+
+# make a plot of the iris data
+import seaborn as sns
+
+p = sns.PairGrid(r.iris, diag_sharey = False, hue = 'Species', corner = True).map_lower(sns.scatterplot).map_diag(sns.kdeplot).add_legend(bbox_to_anchor = (0.6, 0.6))
+
+```
+

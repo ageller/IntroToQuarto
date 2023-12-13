@@ -1,5 +1,4 @@
-quarto_example_files/
-quarto_basics_files/
+examples/*_files/
 *ipynb
 *pdf
 *html
