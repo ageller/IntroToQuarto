@@ -62,7 +62,7 @@ head(iris)
 ```
 
 
-### Create the plot in Python {#corner-plot}
+### Create the plot in Python 
 
 
 ```{python}
