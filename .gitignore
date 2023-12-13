@@ -1,1 +1,5 @@
 quarto_example_files/
+quarto_basics_files/
+*ipynb
+*pdf
+*html
