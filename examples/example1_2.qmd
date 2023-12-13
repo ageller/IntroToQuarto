@@ -7,7 +7,7 @@ format:
     html:
         code-fold: false
         code-tools: true
-theme: solar
+theme: sketchy
 toc: true
 ---
 
@@ -76,3 +76,13 @@ p = sns.PairGrid(r.iris, diag_sharey = False, hue = 'Species', corner = True).ma
 
 ```
 
+## New Python section
+```{python}
+#| label: python-code-2
+
+# add all the variables together
+a = r.x + y + r.z
+
+```
+
+Let's check this math : $a = x + y + z = `r x` + `r py$y` + `r z` = `r py$a`$.

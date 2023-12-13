@@ -67,7 +67,7 @@ head(iris)
 
 ```{python}
 #| label: fig-corner
-#| fig-cap: "Corner plot created showing iris flower data."
+#| fig-cap: "Corner plot created with seaborn showing iris flower data."
 
 # make a plot of the iris data
 import seaborn as sns

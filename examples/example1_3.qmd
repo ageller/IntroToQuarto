@@ -7,7 +7,7 @@ format:
     html:
         code-fold: false
         code-tools: true
-theme: solar
+theme: vapor
 toc: true
 ---
 
@@ -76,3 +76,28 @@ p = sns.PairGrid(r.iris, diag_sharey = False, hue = 'Species', corner = True).ma
 
 ```
 
+## New Python section
+```{python}
+#| label: python-code-2
+
+# add all the variables together
+a = r.x + y + r.z
+
+```
+
+Let's check this math : $a = x + y + z = `r x` + `r py$y` + `r z` = `r py$a`$.
+
+## New R figure show in @fig-rplot
+```{r}
+#| label: fig-rplot
+#| fig-cap: "Box plot of iris petal length using R"
+
+# I installed ggplot2 for this
+library(ggplot2)
+
+ggplot(iris, aes(x = Species, y = Petal.Length)) +
+    geom_boxplot() +
+    xlab('Species') + ylab('Petal Length') +
+    theme_classic()
+
+```

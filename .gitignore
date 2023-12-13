@@ -1,5 +1,5 @@
 examples/*_files/
-*ipynb
-*pdf
-*html
+example*ipynb
+example*pdf
+example*html
 .Rhistory
