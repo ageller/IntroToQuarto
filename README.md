@@ -20,7 +20,7 @@ The example here explores stock prices for Hershey's (chocolate).  I downloaded 
     conda activate quarto-env
     conda config --add channels conda-forge
     conda config --set channel_priority strict
-    conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy scipy r-rmarkdown r-reticulate
+    conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy seaborn r-rmarkdown r-reticulate
     ```
 
 3. Before using Quarto, you will need to activate you env using `conda activate quarto-env`
