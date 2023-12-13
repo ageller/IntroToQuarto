@@ -23,7 +23,7 @@ The example here explores stock prices for Hershey's (chocolate).  I downloaded 
     conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy seaborn r-rmarkdown r-reticulate
     ```
 
-3. Before using Quarto, you will need to activate you env using `conda activate quarto-env`
+3. If you are using conda, before using Quarto you will need to activate your env using `conda activate quarto-env`
 
 ## Rendering your Quarto doc to different formats
 

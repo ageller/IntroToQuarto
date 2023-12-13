@@ -7,7 +7,6 @@ format:
     html:
         code-fold: false
         code-tools: true
-        self-contained: true
 theme: darkly
 toc: true
 ---
