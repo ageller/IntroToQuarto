@@ -29,10 +29,10 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
 
 ## Rendering your Quarto doc to different formats
 
-To convert `quarto_example.qmd` into a .html file using Quarto:
+To convert one of the example files, e.g. `example1.qmd` into a .html file using Quarto, first download or clone this repo.  Then in a terminal within the `examples` directory execute the following command:
 
 ```
-quarto render quarto_example.qmd --to html
+quarto render example1.qmd --to html
 ```
 
 (You can replace html with [many other formats](https://quarto.org/docs/output-formats/all-formats.html).)
