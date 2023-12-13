@@ -5,6 +5,8 @@ Quarto enables users to combine libraries and code from multiple languages (e.g.
 
 The example here explores stock prices for Hershey's (chocolate).  I downloaded the [data](HSY.csv) from Yahoo finance. 
 
+The workshop presentation is avalable on [Google Slides here](https://docs.google.com/presentation/d/190qlfqrHPFh4vtevUeBvUEqcAgdCYBe0/edit?usp=sharing&ouid=100526071325620132362&rtpof=true&sd=true). 
+
 ## Installation
 
 1. Install Quarto:
