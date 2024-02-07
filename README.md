@@ -3,7 +3,7 @@
 Quarto enables users to combine libraries and code from multiple languages (e.g., Python and R) within the same workflow and to generate sharable reports.  For those familiar with R, Quarto is the "next generation of R Markdown".   In this workshop we will explore Quarto using both Python and R within the same workflow, and learn how to convert the output to HTML, PDF (and other formats) to share with others.  
 
 
-The example here explores stock prices for Hershey's (chocolate).  I downloaded the [data](HSY.csv) from Yahoo finance. 
+The example here explores stock prices for Hershey's (chocolate).  I downloaded the [data](examples/HSY.csv) from Yahoo finance. 
 
 The workshop presentation is avalable on [Google Slides here](https://docs.google.com/presentation/d/190qlfqrHPFh4vtevUeBvUEqcAgdCYBe0/edit?usp=sharing&ouid=100526071325620132362&rtpof=true&sd=true). 
 
