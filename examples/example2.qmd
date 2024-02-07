@@ -66,6 +66,9 @@ ax[1].set_xlabel('Date')
 
 plt.subplots_adjust(hspace = 0)
 
+# for RStudio you should include the line below (or you may not see the plot)
+# plt.show()
+
 ```
 
 ```{python}

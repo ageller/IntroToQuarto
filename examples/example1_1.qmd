@@ -74,5 +74,7 @@ import seaborn as sns
 
 p = sns.PairGrid(r.iris, diag_sharey = False, hue = 'Species', corner = True).map_lower(sns.scatterplot).map_diag(sns.kdeplot).add_legend(bbox_to_anchor = (0.6, 0.6))
 
+# for RStudio you should include the line below (or you may not see the plot)
+# p
 ```
 
