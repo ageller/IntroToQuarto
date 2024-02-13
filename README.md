@@ -31,10 +31,11 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
 
 ## Rendering your Quarto doc to different formats
 
-To convert one of the example files, e.g. `example1.qmd` into a .html file using Quarto, first download or clone this repo.  Then in a terminal within the `examples` directory execute the following command:
+To convert one of the example files, e.g. `example1.qmd` into a .html file using Quarto, first download or clone this repo.  Then for Python folks, in a terminal within the `examples` directory execute the following command:
 
 ```
 quarto render example1.qmd --to html
 ```
+For R folks, you can open the example file in RStudio and click the `Render` button at the top. 
 
-(You can replace html with [many other formats](https://quarto.org/docs/output-formats/all-formats.html).)
+(You can replace `html` with [many other formats](https://quarto.org/docs/output-formats/all-formats.html).)
