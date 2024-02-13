@@ -15,7 +15,7 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
 
 2. Install Python and R and related libraries
 
-    For Python folks, I recommend that you use conda and create an environment for this.  (You can either work with [full Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/).)  To create the environment:
+    For Python folks, I recommend that you use conda and create an environment for this.  You can either work with [full Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/).   To create the environment:
 
     ```
     conda create --name quarto-env
@@ -25,7 +25,7 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
     conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy seaborn r-rmarkdown r-reticulate
     ```
 
-    For R folks, again all the installation can be done within RStudio. 
+    For R folks, if you don't already have Python installed, you will need to install Anaconda (see links above).  You shouldn't have to create a conda env.  After installing Anaconda, the rest of the installation can be done within RStudio. 
 
 3. If you are using conda, before using Quarto you will need to activate your env using `conda activate quarto-env`
 
