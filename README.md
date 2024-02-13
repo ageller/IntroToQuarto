@@ -11,11 +11,11 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
 
 1. Install Quarto:
 
-    Documentation from Quarto can be found [here](https://docs.posit.co/resources/install-quarto/).  I used downloaded the latest version from their GitHub repo [here](https://github.com/quarto-dev/quarto-cli/releases/).  Then I added the executable from `<base_dir>/src/bin/` to my PATH variable.
+    Documentation from Quarto can be found [here](https://docs.posit.co/resources/install-quarto/).  For Python folks, it might be easiest to follow the instructions to downloaded the latest .tar.gz version from their GitHub repo (see instructions), and then add the executable from `<base_dir>/src/bin/` to your PATH variable.  For R folks, you can do the installation all within RStudio.
 
 2. Install Python and R and related libraries
 
-    I recommend that you use conda and create an environment for this.  (You can either work with [full Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/).)  To create the environment:
+    For Python folks, I recommend that you use conda and create an environment for this.  (You can either work with [full Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/).)  To create the environment:
 
     ```
     conda create --name quarto-env
@@ -24,6 +24,8 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
     conda config --set channel_priority strict
     conda install python=3.10 r-base=4.1.3 pandas matplotlib numpy seaborn r-rmarkdown r-reticulate
     ```
+
+    For R folks, again all the installation can be done within RStudio. 
 
 3. If you are using conda, before using Quarto you will need to activate your env using `conda activate quarto-env`
 
