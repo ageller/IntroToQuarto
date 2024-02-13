@@ -82,7 +82,7 @@ holiday = pd.Timestamp('2023-02-14') # Valentine's Day
 holiday_frac = holiday.dayofyear/365.25
 col = 'normalized_detrended_close'
 
-# range to use for statistcal analysis
+# range to use for statistical analysis
 days_before = 15/365.25
 days_after = 15/365.25  
 
