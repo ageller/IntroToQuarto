@@ -12,13 +12,12 @@ format:
 ## Import libraries in R and Python
 
 ```{r, setup}
-#| label: r-imports
+
 library(reticulate)
 
 ```
 
 ```{python, setup}
-#| label: python-imports
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -67,8 +66,7 @@ ax[1].set_xlabel('Date')
 
 plt.subplots_adjust(hspace = 0)
 
-# for RStudio you should include the line below (or you may not see the plot)
-# plt.show()
+plt.show()
 
 ```
 
@@ -116,7 +114,6 @@ ax.legend()
 
 
 ```{r}
-#| label: r-stats
 #| warning: false
 
 
@@ -133,14 +130,12 @@ Statistical results:
 
 ## Print the dataframe in Python and then r
 ```{r}
-#| label: r-df
 
 head(py$df)
 ```
 
 
 ```{python}
-#| label: python-df
 
 df.head()
 
