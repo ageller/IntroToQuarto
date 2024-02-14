@@ -13,6 +13,8 @@ toc: true
 
 ## Start in R
 ```{r}
+#| label: r-code1
+ 
 library(reticulate)
 
 # define a simple variable as a test
@@ -22,6 +24,7 @@ x <- 123
 
 ## Use variables from R in Python
 ```{python}
+#| label: python-code1
 
 # multiply the x value from r by 2
 y = r.x*2.
@@ -31,6 +34,7 @@ y = r.x*2.
 
 ## Use variables from Python in R
 ```{r}
+#| label: r-code2
 
 # add to the y variable from python 
 z <- py$y + 7
@@ -47,6 +51,7 @@ I will use  [`seaborn`](https://seaborn.pydata.org/) to generate the corner plot
 
 ### Load the data in R
 ```{r}
+#| label: r-code3
 
 library(datasets)
 
@@ -75,6 +80,7 @@ p
 
 ## New Python section
 ```{python}
+#| label: python-code2
 
 # add all the variables together
 a = r.x + y + r.z

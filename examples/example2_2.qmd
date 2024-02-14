@@ -12,12 +12,14 @@ format:
 ## Import libraries in R and Python
 
 ```{r, setup}
+#| label: r-imports
 
 library(reticulate)
 
 ```
 
 ```{python, setup}
+#| label: python-imports
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -114,6 +116,7 @@ ax.legend()
 
 
 ```{r}
+#| label: r-stats
 #| warning: false
 
 
@@ -130,12 +133,14 @@ Statistical results:
 
 ## Print the dataframe in Python and then r
 ```{r}
+#| label: r-df
 
 head(py$df)
 ```
 
 
 ```{python}
+#| label: python-df
 
 df.head()
 
