@@ -15,7 +15,7 @@ The workshop presentation is avalable on [Google Slides here](https://docs.googl
 
 2. Install Python and R and related libraries
 
-    For Python folks, I recommend that you use conda and create an environment for this.  You can either work with [full Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.conda.io/projects/miniconda/en/latest/).   To create the environment:
+    For Python folks, I recommend that you use conda and create an environment for this, working within [miniforge](https://github.com/conda-forge/miniforge).  To create the environment:
 
     ```
     conda create --name quarto-env
